@@ -26,11 +26,11 @@
 				error.parentNode.appendChild(google);
 				var remaining = 60 - new Date().getMinutes();
 				var print = function () {
-						var text = "You can only perform 6 searches within a minute, please wait " + remaining + " second";
+						var text = "You can only perform 6 searches within a 60 second window, please wait " + remaining + " second";
 						if (remaining !== 1) {
 								text += "s";
 						}
-						error.textContent = text + " then try again.";
+						error.textContent = text + " and try again.";
 				}
 				print();
 				window.setInterval(function () {
