@@ -16,7 +16,9 @@
 		var remaining = 60 - new Date().getMinutes();
 		error.textContent = "You can only perform 6 searches within a minute, please wait " + remaining-- + " seconds then try again.";
 		window.setInterval(function () {
-			error.textContent = "You can only perform 6 searches within a minute, please wait " + remaining-- + " seconds then try again.";
+			if (remaining-- > 0) {
+				error.textContent = "You can only perform 6 searches within a minute, please wait " + remaining + " seconds then try again.";
+			}
 		}, 1000);
 	}
 }());
