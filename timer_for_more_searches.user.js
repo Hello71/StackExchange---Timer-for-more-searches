@@ -11,14 +11,17 @@
 // @include        http://stackapps.com/search?q=*
 // ==/UserScript==
 (function () {
-	var error = document.querySelector(".page-description > p");
-	if (error !== null && (error.textContent === "You can only perform 6 searches within a minute, please wait a minute then try again." || error.textContent === "You can only perform 6 searches within a 60 second window, please wait a moment and try again.")) {
-		var remaining = 60 - new Date().getMinutes();
-		error.textContent = "You can only perform 6 searches within a minute, please wait " + remaining-- + " seconds then try again.";
-		window.setInterval(function () {
-			if (remaining-- > 0) {
-				error.textContent = "You can only perform 6 searches within a minute, please wait " + remaining + " seconds then try again.";
-			}
-		}, 1000);
-	}
+		var error = document.querySelector(".page-description > p");
+		if (error !== null && (error.textContent === "You can only perform 6 searches within a minute, please wait a minute then try again." || error.textContent === "You can only perform 6 searches within a 60 second window, please wait a moment and try again.")) {
+				var remaining = 60 - new Date().getMinutes();
+				var print = function () {
+						error.textContent = "You can only perform 6 searches within a minute, please wait " + remaining + " seconds then try again.";
+				}
+				print();
+				window.setInterval(function () {
+						if (remaining-- > 0) {
+								print();
+						}
+				}, 1000);
+		}
 }());
